@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2531.robot.subsystems;
 
-import org.usfirst.frc.team2531.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2531.robot.commands.TankDrive;
 
 import com.ctre.CANTalon;
 
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ExampleSubsystem extends Subsystem {
+public class Drive extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
@@ -19,7 +19,7 @@ public class ExampleSubsystem extends Subsystem {
 	CANTalon motorBL = new CANTalon(4);
 	CANTalon motorBR = new CANTalon(3);
 
-	public ExampleSubsystem() {
+	public Drive() {
 
 	}
 
@@ -27,7 +27,7 @@ public class ExampleSubsystem extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 
-		setDefaultCommand(new ExampleCommand());
+		setDefaultCommand(new TankDrive());
 	}
 
 	public void tankDrive(Joystick joystick) {

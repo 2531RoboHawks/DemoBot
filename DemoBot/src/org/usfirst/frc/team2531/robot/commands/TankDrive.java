@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
+public class TankDrive extends Command {
+	public TankDrive() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.exampleSubsystem);
 	}
