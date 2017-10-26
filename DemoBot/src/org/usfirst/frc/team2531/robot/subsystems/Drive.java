@@ -30,6 +30,9 @@ public class Drive extends Subsystem {
 		double x = joystick.getRawAxis(0);
 		double y = joystick.getRawAxis(1);
 		double z = joystick.getRawAxis(2);
+		if (z < 0) {
+			z = 0;
+		}
 		double left = (y + x) * z;
 		double right = (y - x) * z;
 		motorFL.set(left);
