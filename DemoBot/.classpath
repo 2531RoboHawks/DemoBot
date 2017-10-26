@@ -10,6 +10,6 @@
 	<classpathentry kind="lib" path="/home/robohawks/Downloads/frclib.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/frclib"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/frclib.jar"/>
-	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/TalonSRXLibJava.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

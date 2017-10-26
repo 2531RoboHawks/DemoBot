@@ -19,10 +19,6 @@ public class Drive extends Subsystem {
 	CANTalon motorBL = new CANTalon(4);
 	CANTalon motorBR = new CANTalon(3);
 
-	public Drive() {
-
-	}
-
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());

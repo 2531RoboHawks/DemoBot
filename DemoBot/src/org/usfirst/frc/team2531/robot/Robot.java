@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team2531.robot;
 
-import org.usfirst.frc.team2531.robot.commands.TankDrive;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -34,15 +33,24 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be used
 	 * for any initialization code.
 	 */
-	@Override
-	public void robotInit() {
-		oi = new OI();
-		
+
+	public void initSmartDashboard() {
 		SmartDashboard.putData("1", step1);
 		SmartDashboard.putData("2", step2);
 		SmartDashboard.putData("3", step3);
 		SmartDashboard.putData("4", step4);
 		SmartDashboard.putData("5", step5);
+	}
+
+	public void updateSmartDashboard() {
+
+	}
+
+	@Override
+	public void robotInit() {
+		System.out.println("#ROBOT-INIT");
+		oi = new OI();
+		initSmartDashboard();
 	}
 
 	/**
@@ -52,12 +60,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		System.out.println("#DISABLED");
 	}
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -73,7 +82,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		System.out.println("#AUTONOMOUS");
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -93,10 +102,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	@Override
 	public void teleopInit() {
+		System.out.println("#TELEOP");
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -111,6 +122,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -119,5 +131,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+		updateSmartDashboard();
 	}
 }
