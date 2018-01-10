@@ -4,15 +4,12 @@ import org.usfirst.frc.team2531.robot.commands.TankDrive;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class Drive extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
 
 	CANTalon motorFL = new CANTalon(2);
 	CANTalon motorFR = new CANTalon(1);
@@ -20,24 +17,41 @@ public class Drive extends Subsystem {
 	CANTalon motorBR = new CANTalon(3);
 
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-
 		setDefaultCommand(new TankDrive());
 	}
 
-	public void tankDrive(Joystick joystick) {
-		double x = joystick.getRawAxis(0);
-		double y = joystick.getRawAxis(1);
-		double z = joystick.getRawAxis(2);
-		if (z < 0) {
-			z = 0;
-		}
-		double left = (y + x) * z;
-		double right = (y - x) * z;
+	public void tankDrive(double left, double right) {
 		motorFL.set(left);
 		motorBL.set(left);
 		motorFR.set(right);
 		motorBR.set(right);
+	}
+
+	public void arcadeDrive(double x, double y) {
+		double left = (y + x);
+		double right = (y - x);
+		motorFL.set(left);
+		motorBL.set(left);
+		motorFR.set(right);
+		motorBR.set(right);
+	}
+
+	public void axisdrive(double x, double y, double r) {
+		double a = Math.atan2(y, x);
+		double pFL = (Math.abs(Math.sin(a)) * y) - (Math.abs(Math.cos(a)) * x) + r;
+		double pFR = (Math.abs(Math.sin(a)) * y) + (Math.abs(Math.cos(a)) * x) - r;
+		double pBL = (Math.abs(Math.sin(a)) * y) + (Math.abs(Math.cos(a)) * x) + r;
+		double pBR = (Math.abs(Math.sin(a)) * y) - (Math.abs(Math.cos(a)) * x) - r;
+		motorFL.set(pFL);
+		motorFR.set(pFR);
+		motorBL.set(pBL);
+		motorBR.set(pBR);
+	}
+
+	public void stop() {
+		motorFL.set(0);
+		motorFR.set(0);
+		motorBL.set(0);
+		motorBR.set(0);
 	}
 }

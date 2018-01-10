@@ -23,7 +23,8 @@ public class TankDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.tankDrive(OI.joystick);
+		// Robot.drive.tankDrive(OI.joystick);
+		Robot.drive.axisdrive(OI.joystick.getRawAxis(0), OI.joystick.getRawAxis(1), OI.joystick.getRawAxis(3));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
